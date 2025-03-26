@@ -1,55 +1,54 @@
-README - Dictionary Data Structure
-Overview
-This project implements a dictionary data structure that efficiently stores words from list.txt and allows optimized word searches. It also provides suggested words for misspellings using TreeSet, which maintains a sorted order of words and allows fast lookup.
+**README - Dictionary Data Structure**
+**Overview**
+* This project implements a dictionary data structure that efficiently stores words from list.txt and allows optimized word searches.
 
-Data Structure Choice - TreeSet vs. HashSet
-TreeSet is chosen because:
 
-Automatic sorting: Enables efficient prefix-based searches and suggestions.
+* It also provides suggested words for misspellings using TreeSet, which maintains a sorted order of words and allows fast lookup.
 
-Logarithmic time complexity (O(log N)) for insertions and lookups.
+**Data Structure Choice - TreeSet vs. HashSet**
 
-Ceiling & Floor functions help in misspelled word suggestions.
+_TreeSet is chosen because:_
 
-HashSet was avoided because:
+* Automatic sorting: Enables efficient prefix-based searches and suggestions.
 
-It offers O(1) lookup, but unordered storage makes word suggestions inefficient.
 
-No built-in support for finding nearest words.
+* Logarithmic time complexity (O(log N)) for insertions and lookups.
 
-Implementation Details
-Dictionary Construction
 
-Reads words from list.txt and stores them in a TreeSet.
+* Ceiling & Floor functions help in misspelled word suggestions.
 
-Optimized Search
+_HashSet was avoided because:_
 
-Direct lookup for exact words (O(log N)).
+* It offers O(1) lookup, but unordered storage makes word suggestions inefficient.
 
-If no match, suggests words using TreeSet ceiling/floor methods (O(log N)).
 
-Edge Cases Handled
+* No built-in support for finding nearest words.
+
+**Implementation Details
+Dictionary Construction**
+
+* Reads words from list.txt and stores them in a TreeSet.
+
+
+* Optimized Search
+
+
+* Direct lookup for exact words (O(log N)).
+
+
+* If no match, suggests words using TreeSet ceiling/floor methods (O(log N)).
+
+
+**Edge Cases Handled**
+
 ✔ Case sensitivity (Hello vs. hello).
+
 ✔ Special characters (co-op, word!).
+
 ✔ Non-existent words (xyzabc).
 
-Time & Space Complexity
-Insertion & Search: O(log N), better for sorted searches.
+**Time & Space Complexity**
 
-Space Complexity: O(N), as only distinct words are stored.
+_Insertion & Search: O(log N), better for sorted searches.
 
-How to Run?
-Ensure Java 8+ is installed.
-
-Compile and run the program:
-
-bash
-Copy
-Edit
-javac DictionarySearch.java
-java DictionarySearch
-Enter a word to search. The program returns:
-
-The exact word if found.
-
-Suggested words if a typo is detected.
+Space Complexity: O(N), as only distinct words are stored._
