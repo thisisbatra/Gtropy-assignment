@@ -2,13 +2,15 @@ import java.io.*;
 import java.util.*;
 public class Dictionary {
 
-    //Using Hashset(unique elements will be stored in unordered fashion)
-    // as it takes **constant time that is O(1)** for insertion, removing, searching.
+    //Using treeset(unique elements will be stored in ordered fashion)
+    // as it takes ** O(log n)** for insertion, removing, searching.
+    // as it implements red black tree internally
     //**Space complexity will be O(n)**
-    private Set<String> dictionary=new HashSet<>();
+    private TreeSet<String> dictionary=new TreeSet<>();
 
-    //a method which load the dictionary and afterwards return its size.
+    //a method which load the dictionary and after wards return its size.
     //Using bufferedReader class which is efficient for long data set.
+    //Total time complexity=O(nlogn) as treeset takes logn for every insertion and we have n words.
     public int dictionaryLoader(String filename){
 
         //try with resource which automatically closes the resource after use.
@@ -39,6 +41,7 @@ public class Dictionary {
     }
 
     //a method which searches the argument present in respective dictionary.
+    //Total time complexity=O(logn).
     public boolean searchWord(String word){
         //checks for not null condition
         if(word!=null){
@@ -52,5 +55,28 @@ public class Dictionary {
             return dictionary.contains(word);
         }
         else return false;
+    }
+
+    public ArrayList<String> searchWithSuggestion(String word){
+        ArrayList<String> suggestions=new ArrayList<>();
+        if(word!=null){
+            word=word.trim().toLowerCase();
+            if(word.isEmpty()) return suggestions;
+
+            if(dictionary.contains(word)){
+                suggestions.add(word);
+                return suggestions;
+            }
+
+            String floor=dictionary.floor(word);
+            String ceil=dictionary.ceiling(word);
+            if(floor!=null){
+                suggestions.add(floor);
+            }
+            if(ceil!=null){
+                suggestions.add(ceil);
+            }
+        }
+        return suggestions;
     }
 }
