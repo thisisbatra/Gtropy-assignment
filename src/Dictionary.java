@@ -57,17 +57,26 @@ public class Dictionary {
         else return false;
     }
 
+    //Total time complexity=O(logn)
     public ArrayList<String> searchWithSuggestion(String word){
+        //returning arraylist if or if not word founded
         ArrayList<String> suggestions=new ArrayList<>();
+        //checking the entered word will not be null
         if(word!=null){
+            //trimming it to erase white spaces & lowerring it for insensitivity
             word=word.trim().toLowerCase();
             if(word.isEmpty()) return suggestions;
 
+            //if dictionary contains the word it will return it
+            //time complexity O(logn)
             if(dictionary.contains(word)){
                 suggestions.add(word);
                 return suggestions;
             }
 
+            //if dictionary doesn't contain the word it will use
+            //floor & ceil for possible suggestion which takes O(logn) as well
+            //these functions works on lexigraphy
             String floor=dictionary.floor(word);
             String ceil=dictionary.ceiling(word);
             if(floor!=null){
@@ -77,6 +86,10 @@ public class Dictionary {
                 suggestions.add(ceil);
             }
         }
+        //returning the respective suggestions
+        //it can be empty
+        //it can be only one
+        //can have 2 suggestions
         return suggestions;
     }
 }
