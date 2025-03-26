@@ -49,6 +49,6 @@ Dictionary Construction**
 
 **Time & Space Complexity**
 
-_Insertion & Search: O(log N), better for sorted searches.
+_Insertion & Search: O(log N), better for sorted searches._
 
-Space Complexity: O(N), as only distinct words are stored._
+_Space Complexity: O(N), as only distinct words are stored._
